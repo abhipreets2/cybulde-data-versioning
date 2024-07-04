@@ -4,8 +4,8 @@ services:
   app:
     user: "${USER_ID:-1000}"
     hostname: "${HOST_NAME:-abhipreet}"
-    image: cybulde-data-preparation
-    container_name: cybulde-data-preparation-container
+    image: cybulde-data-versioning
+    container_name: cybulde-data-versioning-container
     build:
       context: .
       dockerfile: ./docker/Dockerfile

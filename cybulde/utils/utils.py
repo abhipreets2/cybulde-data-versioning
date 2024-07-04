@@ -1,4 +1,4 @@
-import socker
+import socket
 import logging
 import subprocess
 
