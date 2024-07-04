@@ -43,6 +43,5 @@ RUN chown -R ${USER_NAME}:${USER_NAME} ./*.sh && chmod +x ./*.sh
 RUN chown -R ${USER_NAME}:${USER_NAME} ${HOME}/.local
 
 USER ${USER_NAME}
-RUN python3.10 -m nltk.downloader stopwords && python3.10 -m nltk.downloader punkt
 
 CMD ["./startup-script.sh"]
