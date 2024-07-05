@@ -12,4 +12,10 @@ services:
       args:
         USER_NAME: "${USER_NAME:-abhipreet}"
         USER_ID : "${USER_ID:-1000}"
+        GIT_EMAIL : "${GIT_EMAIL:-abhipreets2@gmail.com}"
+        GIT_USERNAME : "${GIT_USERNAME:-abhipreets2}"
+    volumes:
+      - ./:/app/
+      - ~/.config/gcloud:/home/${USER_NAME:-abhipreet}/.config/gcloud
+      - ~/.ssh:/home/${USER_NAME:-abhipreet}/.ssh
       

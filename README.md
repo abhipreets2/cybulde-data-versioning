@@ -19,5 +19,9 @@ The docker image should be able to push changes DVC changes to git repo
 - Install poetry to manage dependencies(Had to add .local to path) 
 - Create ssh key for GIT
 - Version data from docker using DVC  
+Volumes to mount
+- The code directory
+- ~/.config/gcloud
+- ~/.ssh
 
  

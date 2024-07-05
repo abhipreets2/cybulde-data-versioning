@@ -2,12 +2,17 @@ FROM python:3.10-slim
 
 ARG USER_ID
 ARG USER_NAME
+ARG GIT_EMAIL
+ARG GIT_USERNAME
 
 ENV \
 	HOME="/home/${USER_NAME}" \
 	VIRTUAL_ENV="/home/${USER_NAME}/venv"
 ENV \
-	PATH="/usr/local/gcloud/google-cloud-sdk/bin:${HOME}/.local/bin:${VIRTUAL_ENV}/bin:${PATH}"
+	PYTHONUNBUFFERED=1 \
+	DEBIAN_FRONTEND=noninteractive \
+	PATH="/usr/local/gcloud/google-cloud-sdk/bin:${HOME}/.local/bin:${VIRTUAL_ENV}/bin:${PATH}" \
+	PYTHONPATH="/app:${PYTHONPATH}"
 
 RUN apt-get -qq update \
 	&& apt-get -qq -y install curl git 
@@ -38,10 +43,13 @@ RUN poetry config virtualenvs.create false \
 	&& rm -rf ${HOME}/.cache/* 
 
 USER root
-COPY ./docker/scripts/* .
-RUN chown -R ${USER_NAME}:${USER_NAME} ./*.sh && chmod +x ./*.sh
+COPY ./docker/scripts/* / 
+RUN chown -R ${USER_NAME} /*.sh && chmod +x /*.sh
 RUN chown -R ${USER_NAME}:${USER_NAME} ${HOME}/.local
 
 USER ${USER_NAME}
 
-CMD ["./startup-script.sh"]
+RUN git config --global user.email ${GIT_EMAIL} \
+	&& git config --global user.name ${GIT_USERNAME}
+
+CMD ["/startup-script.sh"]
