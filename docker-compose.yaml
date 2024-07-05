@@ -16,6 +16,5 @@ services:
         GIT_USERNAME : "${GIT_USERNAME:-abhipreets2}"
     volumes:
       - ./:/app/
-      - ~/.config/gcloud:/home/${USER_NAME:-abhipreet}/.config/gcloud
-      - ~/.ssh:/home/${USER_NAME:-abhipreet}/.ssh
-      
+      - /home/abhipreet/.config/gcloud:/home/${USER_NAME:-abhipreet}/.config/gcloud
+      - /home/abhipreet/.ssh:/home/${USER_NAME:-abhipreet}/.ssh
