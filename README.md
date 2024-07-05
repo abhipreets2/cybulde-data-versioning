@@ -18,10 +18,16 @@
 The docker image should be able to push changes DVC changes to git repo
 - Install poetry to manage dependencies(Had to add .local to path) 
 - Create ssh key for GIT
-- Version data from docker using DVC  
-Volumes to mount
+- Version data from docker using DVC 
+ 
+Volumes to mount (in my case I had to mention the absolute path)
 - The code directory
 - ~/.config/gcloud
 - ~/.ssh
+
+## Startup script
+- added eval `ssh-agent -s` and ssh-add ~/.ssh/abhipreet_git
+
+In order to make the container work
 
  
