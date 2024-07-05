@@ -26,8 +26,9 @@ Volumes to mount (in my case I had to mention the absolute path)
 - ~/.ssh
 
 ## Startup script
-- added eval `ssh-agent -s` and ssh-add ~/.ssh/abhipreet_git
+- added eval \`ssh-agent -s\` and `ssh-add ~/.ssh/abhipreet_git`
 
 In order to make the container work
 
- 
+## Note
+Run the container only when there are changes in the data folder 
